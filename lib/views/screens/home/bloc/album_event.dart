@@ -10,8 +10,8 @@ class AlbumEvent extends Equatable {
 class GetAlbumEvent extends AlbumEvent {}
 
 class GetAlbumPhotoDetailEvent extends AlbumEvent {
-  GetAlbumPhotoDetailEvent({
+  const GetAlbumPhotoDetailEvent({
     this.id,
   });
-  int? id;
+  final int? id;
 }

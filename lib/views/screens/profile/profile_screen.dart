@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:ajira_social/common/constants.dart';
-import 'package:ajira_social/service/shared_pref.dart';
 import 'package:ajira_social/theme/theme_manager.dart';
 import 'package:ajira_social/theme/theme_provider.dart';
 import 'package:ajira_social/views/components/body_widget.dart';
@@ -123,12 +122,12 @@ class MyProfileScreen extends StatelessWidget {
                     ListTile(
                       contentPadding: const EdgeInsets.all(0),
                       title: Text(
-                        AppPrefHelper.getFirstname() ?? '',
+                        userState.userModal?.name! ?? '',
                         style: context.titleMedium!
                             .copyWith(fontWeight: FontWeight.w600),
                       ),
                       subtitle: Text(
-                        '@${AppPrefHelper.getUsername()}' ?? '',
+                        '@${userState.userModal?.username!}',
                         style: context.titleMedium,
                       ),
                       trailing: userState.userModal?.image != null
@@ -142,7 +141,7 @@ class MyProfileScreen extends StatelessWidget {
                           : CircleAvatar(
                               radius: 30,
                               child: Text(
-                                AppPrefHelper.getFirstname().substring(0, 1) ??
+                                userState.userModal?.name!.substring(0, 1) ??
                                     '',
                                 style: context.headlineMedium,
                               ),
@@ -173,12 +172,12 @@ class MyProfileScreen extends StatelessWidget {
                     verticalMargin16,
                     ProfileTile(
                       iconData: Icons.phone,
-                      name: AppPrefHelper.getPhoneNo() ?? '',
+                      name: userState.userModal?.phone! ?? '',
                     ),
                     verticalMargin16,
                     ProfileTile(
                       iconData: Icons.web,
-                      name: AppPrefHelper.getEmail() ?? '',
+                      name: userState.userModal?.website! ?? '',
                     ),
                     verticalMargin16,
                     ProfileTile(

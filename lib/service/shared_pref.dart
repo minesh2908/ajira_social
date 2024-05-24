@@ -52,13 +52,7 @@ class AppPref {
 }
 
 enum AppPrefKey {
-  profileImage('profileImage'),
   themeMode('theme_mode'),
-  firstname('firstname'),
-  email('email'),
-  username('username'),
-  phoneNo('phoneNo'),
-  website('website'),
   album('album'),
   post('post'),
   profile('profile');
@@ -69,85 +63,31 @@ enum AppPrefKey {
 }
 
 class AppPrefHelper {
-  static Future<bool> setAlbum({required String album}) async {
+  static Future<bool> setAlbumResponse({required String album}) async {
     return AppPref.save(AppPrefKey.album, album);
   }
 
-  static String getAlbum() {
+  static String getAlbumResponse() {
     final album = AppPref.get(AppPrefKey.album, '') as String;
     return album;
   }
 
-  static Future<bool> setPost({required String post}) async {
+  static Future<bool> setPostResponse({required String post}) async {
     return AppPref.save(AppPrefKey.post, post);
   }
 
-  static String getPost() {
+  static String getPostResponse() {
     final post = AppPref.get(AppPrefKey.post, '') as String;
     return post;
   }
 
-  static Future<bool> setProfile({required String profile}) async {
+  static Future<bool> setProfileResponse({required String profile}) async {
     return AppPref.save(AppPrefKey.profile, profile);
   }
 
-  static String getProfile() {
+  static String getProfileResponse() {
     final profile = AppPref.get(AppPrefKey.profile, '') as String;
     return profile;
-  }
-
-  static Future<bool> setProfileImage({required String profileImage}) async {
-    return AppPref.save(AppPrefKey.profileImage, profileImage);
-  }
-
-  static String getProfileImage() {
-    final profileImage = AppPref.get(AppPrefKey.profileImage, '') as String;
-    return profileImage;
-  }
-
-  static Future<bool> setFirstname({required String firstname}) async {
-    return AppPref.save(AppPrefKey.firstname, firstname);
-  }
-
-  static String getFirstname() {
-    final firstname = AppPref.get(AppPrefKey.firstname, '') as String;
-    return firstname;
-  }
-
-  static Future<bool> setEmail({required String email}) async {
-    return AppPref.save(AppPrefKey.email, email);
-  }
-
-  static String getEmail() {
-    final email = AppPref.get(AppPrefKey.email, '') as String;
-    return email;
-  }
-
-  static Future<bool> setUsername({required String username}) async {
-    return AppPref.save(AppPrefKey.username, username);
-  }
-
-  static String getUsername() {
-    final username = AppPref.get(AppPrefKey.username, '') as String;
-    return username;
-  }
-
-  static Future<bool> setPhoneNo({required String phoneNo}) async {
-    return AppPref.save(AppPrefKey.phoneNo, phoneNo);
-  }
-
-  static String getPhoneNo() {
-    final phoneNo = AppPref.get(AppPrefKey.phoneNo, '') as String;
-    return phoneNo;
-  }
-
-  static Future<bool> setWebsite({required String website}) async {
-    return AppPref.save(AppPrefKey.website, website);
-  }
-
-  static String getWebsite() {
-    final website = AppPref.get(AppPrefKey.website, '') as String;
-    return website;
   }
 
   static Future<ThemeMode> setThemeMode({required ThemeMode mode}) async {

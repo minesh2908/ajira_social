@@ -38,16 +38,16 @@ class MyApp extends StatelessWidget {
             ..add(
               GetAlbumEvent(),
             ),
-        ), // Initialize AlbumBloc and trigger albums fetch
+        ), 
         BlocProvider(
           create: (context) => PostBloc()
             ..add(
               GetPostsByUser(),
-            ), // Initialize PostBloc and trigger posts fetch
+            ), 
         ),
         ChangeNotifierProvider<ThemeProvider>(
           create: (context) => ThemeProvider()
-            ..getTheme(), // Initialize ThemeProvider and fetch the current theme
+            ..getTheme(),
         ),
       ],
       child: Consumer<ThemeProvider>(

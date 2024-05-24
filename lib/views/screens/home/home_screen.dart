@@ -1,7 +1,6 @@
 import 'dart:io'; // Import for file operations
 
 import 'package:ajira_social/common/constants.dart';
-import 'package:ajira_social/service/shared_pref.dart';
 import 'package:ajira_social/theme/theme_manager.dart';
 import 'package:ajira_social/views/components/body_widget.dart';
 import 'package:ajira_social/views/screens/home/album_detail_screen.dart';
@@ -58,7 +57,7 @@ class MyHomeScreen extends StatelessWidget {
                                 context,
                                 Icons.phone,
                                 'Phone Number',
-                                AppPrefHelper.getPhoneNo() ??
+                                userState.userModal!.phone ??
                                     '', // Show phone number
                               );
                             },
@@ -84,11 +83,10 @@ class MyHomeScreen extends StatelessWidget {
                                           ), // Display user's image
                                         )
                                       : Text(
-                                          AppPrefHelper.getFirstname()
-                                                  .substring(
+                                          userState.userModal?.name!.substring(
                                                 0,
                                                 1,
-                                              ) ?? // Display first letter of phone number
+                                              ) ??
                                               '',
                                           style: context.displayLarge,
                                         ),
@@ -96,7 +94,7 @@ class MyHomeScreen extends StatelessWidget {
                               ),
                               InkWell(
                                 onTap: () {
-                                  showModalBottomSheet(
+                                  showModalBottomSheet<dynamic>(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
@@ -190,8 +188,7 @@ class MyHomeScreen extends StatelessWidget {
                       ),
                       verticalMargin16,
                       Text(
-                        '@${userState.userModal?.username!}' ??
-                            '', // Display username
+                        '@${userState.userModal?.username!}', // Display username
                         style: context.titleLarge,
                       ),
                       verticalMargin4,
