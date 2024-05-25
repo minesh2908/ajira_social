@@ -12,10 +12,7 @@ class MyPostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<UserBloc, UserState>(
-      listener: (context, userState) {
-        // TODO: implement listener
-      },
+    return BlocBuilder<UserBloc, UserState>(
       builder: (context, userState) {
         return BlocConsumer<PostBloc, PostState>(
           listener: (context, postState) {

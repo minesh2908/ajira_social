@@ -1,25 +1,24 @@
-import 'dart:async'; 
-import 'package:ajira_social/get_it.dart'; 
-import 'package:ajira_social/modals/album_modal.dart'; 
-import 'package:ajira_social/modals/photos_modal.dart'; 
-import 'package:ajira_social/repository/album_repository.dart'; 
-import 'package:ajira_social/repository/photos_repository.dart'; 
-import 'package:bloc/bloc.dart'; 
-import 'package:equatable/equatable.dart'; 
-part 'album_event.dart'; 
-part 'album_state.dart'; 
+import 'dart:async';
+
+import 'package:ajira_social/get_it.dart';
+import 'package:ajira_social/modals/album_modal.dart';
+import 'package:ajira_social/modals/photos_modal.dart';
+import 'package:ajira_social/repository/album_repository.dart';
+import 'package:ajira_social/repository/photos_repository.dart';
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+
+part 'album_event.dart';
+part 'album_state.dart';
 
 // BLoC class for managing album-related state and events
 class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
   AlbumBloc() : super(AlbumState.initial()) {
     // Constructor initializes the Bloc with initial state and sets up event handlers
-    on<AlbumEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-    on<GetAlbumEvent>(_getAlbumEvent); // Event handler for GetAlbumEvent
+    on<GetAlbumEvent>(_getAlbumEvent);
     on<GetAlbumPhotoDetailEvent>(
       _getAlbumPhotoDetailEvent,
-    ); // Event handler for GetAlbumPhotoDetailEvent
+    );
   }
 
   final albumRepository =
@@ -48,7 +47,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
           status: AlbumStatus.failure,
           message: e.toString(),
         ),
-      ); // Emit failure state with error message
+      );
     }
   }
 
@@ -57,23 +56,22 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
     GetAlbumPhotoDetailEvent event,
     Emitter<AlbumState> emit,
   ) async {
-    emit(state.copywith(status: AlbumStatus.loading)); // Emit loading state
+    emit(state.copywith(status: AlbumStatus.loading));
     try {
-      final response = await photosRepository
-          .getUserPhotos(event.id); // Fetch user photos for the specified album
+      final response = await photosRepository.getUserPhotos(event.id);
       emit(
         state.copywith(
           status: AlbumStatus.success,
           photosModal: response,
         ),
-      ); // Emit success state with photos
+      );
     } catch (e) {
       emit(
         state.copywith(
           status: AlbumStatus.failure,
           message: e.toString(),
         ),
-      ); // Emit failure state with error message
+      );
     }
   }
 }

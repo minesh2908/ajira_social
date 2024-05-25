@@ -2,14 +2,21 @@ import 'package:ajira_social/common/constants.dart';
 import 'package:ajira_social/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 
+/// A widget representing a profile tile with an icon and a name.
 class ProfileTile extends StatelessWidget {
+  /// Constructs a [ProfileTile] with required icon and name parameters.
   const ProfileTile({
     required this.iconData,
     required this.name,
     super.key,
   });
+
+  /// The icon to be displayed in the tile.
   final IconData iconData;
+
+  /// The name of the profile tile.
   final String name;
+
   @override
   Widget build(BuildContext context) {
     return Row(

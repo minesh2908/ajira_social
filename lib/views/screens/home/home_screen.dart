@@ -1,4 +1,4 @@
-import 'dart:io'; // Import for file operations
+import 'dart:io';
 
 import 'package:ajira_social/common/constants.dart';
 import 'package:ajira_social/theme/theme_manager.dart';
@@ -16,12 +16,13 @@ class MyHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<UserBloc, UserState>(
       listener: (context, userState) {
-        // Listener to handle state changes for UserBloc
+        print(userState.status);
       },
       builder: (context, userState) {
         return BlocConsumer<AlbumBloc, AlbumState>(
           listener: (context, albumState) {
             // Listener to handle state changes for AlbumBloc
+            print(albumState.status);
             if (userState.status == UserStatus.failure ||
                 albumState.status == AlbumStatus.failure) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -35,14 +36,13 @@ class MyHomeScreen extends StatelessWidget {
           builder: (context, albumState) {
             return BodyWidget(
               isLoading: albumState.status == AlbumStatus.loading ||
-                  userState.status ==
-                      UserStatus.loading, // Show loading indicator if loading
+                  userState.status == UserStatus.loading,
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(
                     userState.userModal?.name! ?? '',
                   ), // Display user's name in app bar
-                  centerTitle: true, // Center the title
+                  centerTitle: true,
                 ),
                 body: SingleChildScrollView(
                   child: Column(
@@ -63,7 +63,7 @@ class MyHomeScreen extends StatelessWidget {
                             },
                             child: const CircleAvatar(
                               radius: 30,
-                              child: Icon(Icons.call), // Phone icon
+                              child: Icon(Icons.call),
                             ),
                           ),
                           Stack(
@@ -80,7 +80,7 @@ class MyHomeScreen extends StatelessWidget {
                                           height: 50,
                                           File(
                                             userState.userModal!.image!.path,
-                                          ), // Display user's image
+                                          ),
                                         )
                                       : Text(
                                           userState.userModal?.name!.substring(
@@ -106,8 +106,7 @@ class MyHomeScreen extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Choose Photo',
-                                                style: context
-                                                    .headlineSmall, // Choose photo title
+                                                style: context.headlineSmall,
                                               ),
                                               const Divider(
                                                 indent: 12,
@@ -117,8 +116,9 @@ class MyHomeScreen extends StatelessWidget {
                                               InkWell(
                                                 onTap: () {
                                                   context.read<UserBloc>().add(
-                                                        GetImageFromGalleryEvent(), // Event to pick image from gallery
+                                                        GetImageFromGalleryEvent(),
                                                       );
+                                                  Navigator.pop(context);
                                                 },
                                                 child: Row(
                                                   children: [
@@ -138,8 +138,9 @@ class MyHomeScreen extends StatelessWidget {
                                               InkWell(
                                                 onTap: () {
                                                   context.read<UserBloc>().add(
-                                                        GetImageFromCameraEvent(), // Event to pick image from camera
+                                                        GetImageFromCameraEvent(),
                                                       );
+                                                  Navigator.pop(context);
                                                 },
                                                 child: Row(
                                                   children: [
@@ -162,7 +163,7 @@ class MyHomeScreen extends StatelessWidget {
                                   );
                                 },
                                 child: const Icon(
-                                  Icons.camera_alt, // Camera icon
+                                  Icons.camera_alt,
                                   size: 30,
                                 ),
                               ),
@@ -175,20 +176,19 @@ class MyHomeScreen extends StatelessWidget {
                                 context,
                                 Icons.web,
                                 'Website',
-                                userState.userModal?.website! ??
-                                    '', // Show website
+                                userState.userModal?.website! ?? '',
                               );
                             },
                             child: const CircleAvatar(
                               radius: 30,
-                              child: Icon(Icons.web), // Web icon
+                              child: Icon(Icons.web),
                             ),
                           ),
                         ],
                       ),
                       verticalMargin16,
                       Text(
-                        '@${userState.userModal?.username!}', // Display username
+                        '@${userState.userModal?.username!}',
                         style: context.titleLarge,
                       ),
                       verticalMargin4,
@@ -199,7 +199,7 @@ class MyHomeScreen extends StatelessWidget {
                             onTap: () {
                               context.read<UserBloc>().add(
                                     GetUserCurrenctLocationEvent(),
-                                  ); // Event to get current location
+                                  );
                             },
                             child: const Icon(
                               Icons.location_on,
@@ -207,16 +207,14 @@ class MyHomeScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            userState.userModal?.address!.street ??
-                                '', // Display street address
+                            userState.userModal?.address!.street ?? '',
                             style: context.titleMedium,
                           ),
                         ],
                       ),
                       verticalMargin4,
                       Text(
-                        userState.userModal?.address!.city ??
-                            '', // Display city
+                        userState.userModal?.address!.city ?? '',
                         style: context.titleMedium,
                       ),
                       verticalMargin16,
@@ -232,7 +230,7 @@ class MyHomeScreen extends StatelessWidget {
                             'ALBUMS',
                             style: context.bodyLarge!.copyWith(
                               fontWeight: FontWeight.w600,
-                            ), // Albums title
+                            ),
                           ),
                           const Expanded(
                             child: Divider(
@@ -250,9 +248,9 @@ class MyHomeScreen extends StatelessWidget {
                           shrinkWrap: true,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, // Number of columns
-                            mainAxisSpacing: 10, // Spacing between rows
-                            crossAxisSpacing: 10, // Spacing between columns
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
                           ),
                           itemCount: albumState.albumModal?.length ??
                               0, // Number of albums
@@ -269,7 +267,7 @@ class MyHomeScreen extends StatelessWidget {
                                           builder: (context) =>
                                               AlbumDetailScreen(
                                             albumModal: albumState.albumModal?[
-                                                index], // Navigate to album detail screen
+                                                index], 
                                           ),
                                         ),
                                       );
@@ -278,10 +276,10 @@ class MyHomeScreen extends StatelessWidget {
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: context
-                                            .secondaryContainer, // Album container background color
+                                            .secondaryContainer, 
                                       ),
                                       child: const Icon(
-                                        Icons.folder_outlined, // Folder icon
+                                        Icons.folder_outlined, 
                                         size: 100,
                                       ),
                                     ),
@@ -289,7 +287,7 @@ class MyHomeScreen extends StatelessWidget {
                                 ),
                                 Text(
                                   albumState.albumModal?[index]!.title ??
-                                      '', // Display album title
+                                      '',
                                   style: context.bodyMedium,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -330,7 +328,7 @@ class MyHomeScreen extends StatelessWidget {
           actions: [
             InkWell(
               onTap: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context); 
               },
               child: const Text('Ok'),
             ),

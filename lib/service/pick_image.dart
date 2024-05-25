@@ -1,24 +1,24 @@
 import 'package:image_picker/image_picker.dart';
 
-// Define the PickImage class
+/// A class for picking images using the ImagePicker plugin.
 class PickImage {
-  // Define a method to pick an image from the gallery
+  /// Picks an image from the device's gallery.
+  ///
+  /// Returns the selected image as an [XFile], or `null` if no image was selected.
   Future<XFile?>? pickImageFromGalllery() async {
-    // Use the ImagePicker to pick an image from the gallery
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
-    // Return the selected image
     return returnedImage;
   }
 
-  // Define a method to pick an image from the camera
+  /// Picks an image using the device's camera.
+  ///
+  /// Returns the selected image as an [XFile], or `null` if no image was captured.
   Future<XFile?>? pickImageFromCamera() async {
-    // Use the ImagePicker to pick an image from the camera
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.camera);
 
-    // Return the selected image
     return returnedImage;
   }
 }

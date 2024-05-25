@@ -69,7 +69,6 @@ AppBarTheme _appBarTheme(
   BuildContext context,
 ) {
   return AppBarTheme(
-    //titleTextStyle: context.appBarTitleStyle,
     centerTitle: false,
     systemOverlayStyle: systemUiOverlayStyle.copyWith(
       statusBarColor: Colors.transparent,

@@ -2,7 +2,11 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+/// A class to handle location permission and retrieve current position.
 class CheckLocationPermission {
+  /// Handles location permission requests.
+  ///
+  /// Returns `true` if location permission is granted, `false` otherwise.
   Future<bool> handleLocationPermission() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -27,6 +31,9 @@ class CheckLocationPermission {
     return true;
   }
 
+  /// Retrieves the current position if location permission is granted.
+  ///
+  /// Returns the current [Position], or `null` if permission is not granted or an error occurs.
   Future<Position?> getCurrentPosition() async {
     try {
       final hasPermission = await handleLocationPermission();
@@ -39,6 +46,12 @@ class CheckLocationPermission {
     }
   }
 
+  /// Retrieves address from latitude and longitude.
+  ///
+  /// [position]: The [Position] object containing latitude and longitude.
+  ///
+  /// Returns a [Placemark] representing the address information for the given coordinates,
+  /// or `null` if an error occurs.
   Future<Placemark?> getAddressFromLatLng(Position position) async {
     try {
       final placeMarks =
