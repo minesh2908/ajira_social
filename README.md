@@ -167,5 +167,5 @@ flutter run
 This will launch the app on the connected device or emulator.
 
 ---
-[![Watch the video](https://www.dsecctv.com/images/Demo%20clip%20icon%20md.png)](https://www.loom.com/share/d2e511064b1a45f8ae69d531c9a6cace?sid=e54eb7f6-8839-4ebb-b530-40c3202586cd)
+[![Watch the video]()](https://www.loom.com/share/d2e511064b1a45f8ae69d531c9a6cace?sid=e54eb7f6-8839-4ebb-b530-40c3202586cd)
 
