@@ -168,5 +168,5 @@ This will launch the app on the connected device or emulator.
 
 ---
 ## Demo Video
-[![Watch the Demo video]](https://www.loom.com/share/d2e511064b1a45f8ae69d531c9a6cace?sid=e54eb7f6-8839-4ebb-b530-40c3202586cd)
+[Watch the Demo video](https://www.loom.com/share/d2e511064b1a45f8ae69d531c9a6cace?sid=e54eb7f6-8839-4ebb-b530-40c3202586cd)
 
