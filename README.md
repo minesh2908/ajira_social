@@ -1,4 +1,4 @@
-# ajira_social
+# Ajira Social
 Sure, I can help you create documentation for your Flutter project. Here’s a structured documentation format that covers various aspects of your project, including setup, architecture, features, and how to use the code.
 
 ### Project Documentation for Ajira Social
@@ -167,3 +167,5 @@ flutter run
 This will launch the app on the connected device or emulator.
 
 ---
+[![Watch the video]()](https://www.loom.com/share/d2e511064b1a45f8ae69d531c9a6cace?sid=e54eb7f6-8839-4ebb-b530-40c3202586cd)
+
