@@ -21,6 +21,8 @@ Ajira Social is a Flutter application designed to manage user interactions throu
 6. [Features](#features)
 7. [Dependencies](#dependencies)
 8. [How to Run](#how-to-run)
+9. [Demo Video](#demo_video)
+10. [APK File](#apk_file)
 
 ---
 
