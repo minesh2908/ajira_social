@@ -1,9 +1,3 @@
-# Ajira Social
-Sure, I can help you create documentation for your Flutter project. Here’s a structured documentation format that covers various aspects of your project, including setup, architecture, features, and how to use the code.
-
-### Project Documentation for Ajira Social
-
----
 
 ## Project Overview
 
